@@ -12,26 +12,36 @@ const LiveReloadPlugin = require('webpack-livereload-plugin');
  |
  */
 
-mix.options({
-    extractVueStyles: false,
-    processCssUrls: true,
-    uglify: {},
-    purifyCss: false,
-//purifyCss: {},
-    postCss: [require('autoprefixer')],
-    clearConsole: false
-});
-
 mix.webpackConfig({
+    entry: {
+      //  main: path.resolve(__dirname, 'resources/assets/js/app.js')
+    },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common' // 指定公共 bundle 的名称。
         }),
         new LiveReloadPlugin(),
-    ]
+        //new webpack.HashedModuleIdsPlugin(),
+       /* new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })*/
+    ],
+    output: {
+        //chunkFilename: '[name].bundle.js?[chunkhash]',
+    }
 });
 
 mix.less('resources/assets/less/index.less', 'public/css');
 
-mix.js('resources/assets/js/app.js', 'public/js').extract(['vue', 'iview']);
+mix.js('resources/assets/js/app.js', 'public/js').extract([
+    'vue',
+    'iview',
+    'axios',
+    'lodash',
+]);
 mix.sass('resources/assets/sass/app.scss', 'public/css');
+
+//mix.minify('public/js/app.js').minify('public/js/vendor.js');
+

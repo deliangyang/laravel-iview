@@ -1,7 +1,7 @@
 {
+    "/js/vendor.js": "/js/vendor.js",
     "/js/app.js": "/js/app.js",
     "/css/index.css": "/css/index.css",
     "/css/app.css": "/css/app.css",
-    "/js/vendor.js": "/js/vendor.js",
     "/common.js": "/common.js"
 }

@@ -6,6 +6,7 @@
                 <Page :total="100" :current="1" @on-change="changePage"></Page>
             </div>
         </div>
+        <test-component></test-component>
     </div>
 </template>
 <script>
